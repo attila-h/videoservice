@@ -18,7 +18,7 @@ public class VideoController {
         this.videoDao = videoDao;
     }
 
-    @GetMapping("/api/videos")
+    @GetMapping("/videos")
     private ResponseEntity getAllVideos() {
         return ResponseEntity.ok(videoDao.getAll());
     }
