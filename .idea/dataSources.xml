@@ -7,5 +7,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/video_db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="recommendation_db@localhost" uuid="2f57e908-c6c1-471d-bd40-22497bee882e">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/recommendation_db</jdbc-url>
+    </data-source>
   </component>
 </project>
