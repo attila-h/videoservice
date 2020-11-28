@@ -9,6 +9,7 @@ import java.util.List;
 public interface RecommendationDao {
 
     List<Recommendation> getAllRecommendationByVideoId(Long videoId);
+    void addNewRecommendation(Recommendation recommendation);
     void updateRecommendation(Recommendation recommendation);
 
 }
