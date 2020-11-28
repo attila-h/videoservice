@@ -22,4 +22,6 @@ public interface RecommendationRepository extends JpaRepository<Recommendation, 
             @Param("id") Long id
     );
 
+    boolean existsRecommendationById(Long id);
+
 }

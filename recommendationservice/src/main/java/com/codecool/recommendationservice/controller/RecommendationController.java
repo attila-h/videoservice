@@ -31,7 +31,7 @@ public class RecommendationController {
             return ResponseEntity.ok("Success");
         } catch (Exception e) {
             return ResponseEntity.badRequest()
-                    .body("Error while saving recommendation");
+                    .body("Error while saving recommendation: " + e.getMessage());
         }
     }
 
@@ -42,7 +42,7 @@ public class RecommendationController {
             return ResponseEntity.ok("Success");
         } catch (Exception e) {
             return ResponseEntity.badRequest()
-                    .body("Error while updating recommendation");
+                    .body("Error while updating recommendation: " + e.getMessage());
         }
     }
 
