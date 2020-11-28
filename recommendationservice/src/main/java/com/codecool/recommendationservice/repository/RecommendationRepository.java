@@ -15,11 +15,11 @@ public interface RecommendationRepository extends JpaRepository<Recommendation, 
 
     @Transactional
     @Modifying
-    @Query("UPDATE Recommendation rec SET rec.comment = :comment, rec.rating = :rating WHERE rec.videoId = :videoId")
+    @Query("UPDATE Recommendation rec SET rec.comment = :comment, rec.rating = :rating WHERE rec.id = :id")
     void updateRecommendation(
             @Param("comment") String comment,
             @Param("rating") Integer rating,
-            @Param("videoId") Long videoId
+            @Param("id") Long id
     );
 
 }
