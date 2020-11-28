@@ -3,9 +3,11 @@ package com.codecool.recommendationservice.dao.implementation;
 import com.codecool.recommendationservice.dao.interfaces.RecommendationDao;
 import com.codecool.recommendationservice.entity.Recommendation;
 import com.codecool.recommendationservice.repository.RecommendationRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class RecommendationJpa implements RecommendationDao {
 
     public static final int MIN_RATING = 0;
