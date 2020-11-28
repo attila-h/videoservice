@@ -37,7 +37,7 @@ public class RecommendationJpa implements RecommendationDao {
             throw new IllegalArgumentException("Rating must be between 0 and 5");
         }
         if (!recommendationRepository.existsRecommendationById(recommendation.getId())) {
-            throw new IllegalArgumentException("Video ID doesn't exist");
+            throw new IllegalArgumentException("Recommendation doesn't exist");
         }
         recommendationRepository.updateRecommendation(
                 recommendation.getComment(),

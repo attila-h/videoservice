@@ -28,7 +28,7 @@ public class RecommendationController {
     }
 
     @PostMapping(value = "/recommendation")
-    private ResponseEntity<Object> addNewRecommendation(Recommendation recommendation) {
+    private ResponseEntity<Object> addNewRecommendation(@RequestBody Recommendation recommendation) {
         try {
             recommendationDao.addNewRecommendation(recommendation);
             return ResponseEntity.ok("Success");
@@ -39,7 +39,7 @@ public class RecommendationController {
     }
 
     @PutMapping(value = "/recommendation")
-    private ResponseEntity<Object> updateRecommendation(Recommendation recommendation) {
+    private ResponseEntity<Object> updateRecommendation(@RequestBody Recommendation recommendation) {
         try {
             recommendationDao.updateRecommendation(recommendation);
             return ResponseEntity.ok("Success");
