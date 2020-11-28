@@ -1,11 +1,10 @@
 package com.codecool.recommendationservice.controller;
 
 import com.codecool.recommendationservice.dao.interfaces.RecommendationDao;
+import com.codecool.recommendationservice.entity.Recommendation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
@@ -18,12 +17,33 @@ public class RecommendationController {
         this.recommendationDao = recommendationDao;
     }
 
-    @GetMapping("/recommendations")
+    @GetMapping(value = "/recommendations")
     private ResponseEntity<Object> getRecommendationsForVideo(Long videoId) {
         if (videoId == null) return ResponseEntity.badRequest()
                 .body("Missing parameter: video ID");
         return ResponseEntity.ok(recommendationDao.getAllRecommendationByVideoId(videoId));
     }
 
+    @PostMapping(value = "/recommendation")
+    private ResponseEntity<Object> addNewRecommendation(Recommendation recommendation) {
+        try {
+            recommendationDao.addNewRecommendation(recommendation);
+            return ResponseEntity.ok("Success");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest()
+                    .body("Error while saving recommendation");
+        }
+    }
+
+    @PutMapping(value = "/recommendation")
+    private ResponseEntity<Object> updateRecommendation(Recommendation recommendation) {
+        try {
+            recommendationDao.updateRecommendation(recommendation);
+            return ResponseEntity.ok("Success");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest()
+                    .body("Error while updating recommendation");
+        }
+    }
 
 }
