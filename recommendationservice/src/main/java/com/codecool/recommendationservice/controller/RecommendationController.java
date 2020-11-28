@@ -2,6 +2,7 @@ package com.codecool.recommendationservice.controller;
 
 import com.codecool.recommendationservice.dao.interfaces.RecommendationDao;
 import com.codecool.recommendationservice.entity.Recommendation;
+import com.codecool.recommendationservice.model.VideoIdentifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +19,12 @@ public class RecommendationController {
     }
 
     @GetMapping(value = "/recommendations")
-    private ResponseEntity<Object> getRecommendationsForVideo(Long videoId) {
-        if (videoId == null) return ResponseEntity.badRequest()
+    private ResponseEntity<Object> getRecommendationsForVideo(@RequestBody VideoIdentifier videoIdentifier) {
+        if (videoIdentifier.getVideoId() == null) return ResponseEntity.badRequest()
                 .body("Missing parameter: video ID");
-        return ResponseEntity.ok(recommendationDao.getAllRecommendationByVideoId(videoId));
+        return ResponseEntity.ok(recommendationDao.getAllRecommendationByVideoId(
+                videoIdentifier.getVideoId()
+        ));
     }
 
     @PostMapping(value = "/recommendation")
